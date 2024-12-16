@@ -41,21 +41,21 @@ function App() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-gray-100 rounded-lg shadow-lg">
-      <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">ThoughtDrop</h1>
+    <div className="max-w-full p-4 bg-black">
+      <h1 className="text-3xl font-bold text-center text-gray-500 mb-6">ThoughtDrop</h1>
 
       {/* Thought Submission */}
       <form onSubmit={postThought} className="mb-6">
-        <label className="block text-lg font-medium mb-2">Share your thought:</label>
+        <label className="block text-lg font-medium mb-2 text-white">Share your thought:</label>
         <textarea
           value={thought}
           onChange={ (e) => {
             handleChange(e)
           } }
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-3 border border-gray-300 bg-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           placeholder="Write your thought (max 50 words)"
         />
-        <div>
+        <div className='text-white'>
           {`${wordCount}/50`}
         </div>
         <button
@@ -66,35 +66,14 @@ function App() {
         </button>
       </form>
 
-          {/* <div>
-            {
-              thoughts.map((e) => {
-                return <div key={e.id} className='flex flex-col border-y border-black py-2'>
-                  <div className='font-bold text-lg'>
-                    {`@${e.author.username}`}
-                  </div>
-                  <div className='ml-5'>
-                    {e.content}
-                  </div>
-                  <div className='self-end mr-5 mt-2'>
-                    {`${e.createdAt.split('T')[0]} ${e.createdAt.split('T')[1].split('Z')[0].split('.')[0]}`}
-                  </div>
-                </div>
-              })
-            }
-          </div> */}
-
       <div className="space-y-6">
         {thoughts.map((e) => (
-          <div key={e.id} className="bg-white p-6 rounded-lg shadow-md">
-            {/* Username and Date/Time */}
+          <div key={e.id} className="bg-gray-900 p-6 rounded-lg shadow-md">
             <div className="flex justify-between items-center mb-4">
-              <span className="text-lg font-semibold text-gray-800">{e.author.username}</span>
-              <span className="text-sm text-gray-500">{`${e.createdAt.split('T')[0]} ${e.createdAt.split('T')[1].split('Z')[0].split('.')[0]}`}</span>
+              <span className="text-lg font-semibold text-gray-300">@{e.author.username}</span>
+              <span className="text-sm text-gray-200">{`${e.createdAt.split('T')[0]} ${e.createdAt.split('T')[1].split('Z')[0].split('.')[0]}`}</span>
             </div>
-            
-            {/* Content */}
-            <p className="text-gray-700">{e.content}</p>
+            <p className="text-gray-400">{e.content}</p>
           </div>
         ))}
       </div>
